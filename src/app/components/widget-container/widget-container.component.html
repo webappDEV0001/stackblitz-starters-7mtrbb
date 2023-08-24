@@ -1,6 +1,12 @@
-<app-widget-header [numberOfWidgets]="numberOfWidgets" [totalPrice]="totalPrice"></app-widget-header>
+<app-widget-header
+  [numberOfWidgets]="numberOfWidgets"
+  [totalPrice]="totalPrice"
+></app-widget-header>
 <div class="content">
-    <ng-container *ngFor="let widget of widgets | async">
-        <app-widget-body [widget]="widget" (delete)="onDelete"></app-widget-body>
-    </ng-container>
+  <ng-container *ngFor="let widget of widgets | async">
+    <app-widget-body
+      [widget]="widget"
+      (delete)="onDelete($event)"
+    ></app-widget-body>
+  </ng-container>
 </div>
