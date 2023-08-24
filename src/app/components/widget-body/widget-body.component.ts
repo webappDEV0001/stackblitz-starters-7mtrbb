@@ -1,10 +1,10 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Widget } from 'src/app/models/widget';
+import { Widget } from '../../models/widget';
 
 @Component({
   selector: 'app-widget-body',
   templateUrl: './widget-body.component.html',
-  styleUrls: ['./widget-body.component.scss']
+  styleUrls: ['./widget-body.component.scss'],
 })
 export class WidgetBodyComponent {
   @Input() widget!: Widget;

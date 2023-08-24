@@ -1,8 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { BehaviorSubject, Subject, takeUntil } from 'rxjs';
-import { Widget } from 'src/app/models/widget';
-import { WidgetCollection } from 'src/app/models/widget-collection';
-import { WidgetService } from 'src/app/services/widget.service';
+import { Widget } from '../../models/widget';
+import { WidgetService } from '../../services/widget.service';
 
 @Component({
   selector: 'app-widget-container',
@@ -24,24 +23,28 @@ export class WidgetContainerComponent implements OnInit {
   constructor(private widgetService: WidgetService) {}
 
   ngOnInit(): void {
-    this.widgetService.getWidgets().pipe(
-      takeUntil(this.destroy$)
-    ).subscribe((widgets) => (this.widgets.next(Object.values(widgets))));
+    this.widgetService
+      .getWidgets()
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((widgets) => this.widgets.next(Object.values(widgets)));
   }
 
   onDelete(id: string) {
-    this.widgetService.deleteWidget(id).pipe(
-      takeUntil(this.destroy$)
-    ).subscribe((resp) => {
-      if (resp?.status === 'OK') {
-        let curWidgets = this.widgets.value;
-        this.widgets.next(curWidgets.filter(curWidget => curWidget.id !== id));
-      }
-    });
+    this.widgetService
+      .deleteWidget(id)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((resp) => {
+        if (resp?.status === 'OK') {
+          let curWidgets = this.widgets.value;
+          this.widgets.next(
+            curWidgets.filter((curWidget) => curWidget.id !== id)
+          );
+        }
+      });
   }
 
   ngOnDestroy(): void {
     this.destroy$.next(null);
     this.destroy$.complete();
-  } 
+  }
 }
