@@ -37,6 +37,6 @@ import { WidgetBodyComponent } from './components/widget-body/widget-body.compon
     MatButtonModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
