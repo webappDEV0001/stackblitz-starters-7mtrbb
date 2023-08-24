@@ -1,22 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import { RouterModule } from '@angular/router';
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'my-app',
-  standalone: true,
+  selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
-  imports: [
-    MatToolbarModule,
-    RouterModule,
-  ]
+  styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+export class AppComponent {
+  title = 'SJTech-Test';
 }
