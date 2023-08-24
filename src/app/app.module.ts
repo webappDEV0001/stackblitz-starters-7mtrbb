@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
@@ -13,10 +13,10 @@ import { MatButtonModule } from '@angular/material/button';
 
 // Custom
 import { HeaderComponent } from './components/header/header.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { WidgetContainerComponent } from './components/widget-container/widget-container.component';
 import { WidgetHeaderComponent } from './components/widget-header/widget-header.component';
 import { WidgetBodyComponent } from './components/widget-body/widget-body.component';
+import { WidgetService } from './services/widget.service';
 
 @NgModule({
   declarations: [
@@ -36,7 +36,7 @@ import { WidgetBodyComponent } from './components/widget-body/widget-body.compon
     MatInputModule,
     MatButtonModule,
   ],
-  providers: [],
+  providers: [WidgetService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
